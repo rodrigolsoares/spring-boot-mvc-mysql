@@ -12,7 +12,11 @@ public class CadastroEquipamento {
 
 	public CadastroEquipamento() {
 	}
-
+	
+	public CadastroEquipamento(Long id) {
+		this.id = id;
+	}
+	
 	public CadastroEquipamento(Long id, String nome) {
 		this.id = id;
 		this.nome = nome;

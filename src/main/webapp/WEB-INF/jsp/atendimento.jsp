@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@ page language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
@@ -17,7 +20,6 @@
 			<div id="navbar" class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 				    <li  class="active"><a href="#about">Cadastro Atendimento</a></li>
-					<li><a href="#about">RelatÛrio</a></li>
 				</ul>
 			</div>
 		</div>
@@ -33,17 +35,19 @@
 		
 		<form>
 		     
+		     <input type="hidden" id="idInstalacao" name="idInstalacao"/>
+		     
 		     <div class="row">
 		     
 		         <div class="col-md-8">
 		         
 		             <div class="form-group">
 		             
-                               <label for="numeroChamado">N˙mero Chamado InstalaÁ„o</label>
+                               <label for="numeroChamado">N√∫mero Chamado Instala√ß√£o</label>
                                
                                <div class="input-group">
                                
-	                               <input type="text" class="form-control" id="cadastroNome" placeholder="Nome Completo">
+	                               <input type="text" class="form-control" id="numeroInstalacao" placeholder="N√∫mero Instala√ß√£o">
 	                             
 	                               <span class="input-group-btn">
 	                                   <button type="button" class="btn btnMain" id="btn-tratar" >Tratar</button>
@@ -52,65 +56,75 @@
                                 
                        </div>
                        
+                       <div class="demais-campos">
                        
-                        <div class="form-group">
-                        
-                              <label for="numeroChamado">Modelo do modem</label>
-                                     
-                              <select class="form-control" >
-							    <option selected>Selecione...</option>
-							    
-							    <c:forEach var="item" items="${equipamentos}">
-							         <option value="${item.id}">${item.nome}</option>
-							    </c:forEach>
-							    
-							  </select>
-						  
-                       </div>
-                       
-                        <hr>
-                       
-                       <h4>InstalaÁ„o encerrada?</h4>
-                      
-                       <div class="row">
-                        <div class="col-md-12">
+	                        <div class="form-group">
+	                        
+	                              <label for="numeroChamado">Modelo do modem</label>
+	                                     
+	                              <select class="form-control" id="idModem">
+								    <option selected> </option>
+								    
+								    <c:forEach var="item" items="${equipamentos}">
+								         <option value="${item.id}">${item.nome}</option>
+								    </c:forEach>
+								    
+								  </select>
+							  
+	                       </div>
+	                       
+	                        <hr>
+	                       
+	                       <h4>Instala√ß√£o encerrada?</h4>
+	                      
+	                       <div class="row">
+	                        <div class="col-md-12">
+	                            
+	                            <label class="radio-inline"> <input type="radio" name="instalacaoEncerrada"  id="instalacaoEncerrada" value="S" checked>
+	                                Sim
+	                            </label>
+	                            
+	                            <label class="radio-inline"> <input type="radio" name="instalacaoEncerrada" id="instalacaoEncerrada" value="N"  >
+	                                N√£o
+	                            </label>
+	                        
+	                        </div>
+	                       </div>
+	                       
+	                       <hr>
+	                       
+	                       <div class="form-group">
+	                        
+	                              <label for="numeroChamado">Motivo para n√£o instala√ß√£o</label>
+	                                     
+	                              <select class="form-control" id="idAvarias" disabled="disabled">
+	                               <option selected></option>
+	                               
+	                               <c:forEach var="item" items="${responsaveisAvarias}">
+	                                     <option value="${item.id}">${item.nomeGrupoResponsavel}</option>
+	                                </c:forEach>
+	                                
+	                             </select>
+	                             
+	                       </div>
+	                       
+	                        <div class="form-group">
                             
-                            <label class="radio-inline"> <input type="radio" id="encerrado" value="S">
-                                Sim
-                            </label>
-                            
-                            <label class="radio-inline"> <input type="radio" id="encerrado" value="N">
-                                N„o
-                            </label>
-                        
-                        </div>
+                                  <label for="numeroChamado">Descri√ß√£o Motivo para n√£o instala√ß√£o</label>
+                                         
+                                   <input type="text" class="form-control" id="textoMotivoNaoInstalacao" placeholder="Descri√ß√£o do problema"  disabled="disabled">
+                                 
+                           </div>
+	                       
+	                       <hr>
+	                       
+	                       <div class="form-group">
+	                            <center>
+	                                <button type="button" id="btn-reportar" class="btn btn-primary btn-lg">Reportar</button>
+	                            </center>
+	                       </div>
+                       
                        </div>
-                       
-                       <hr>
-                       
-                       <div class="form-group">
-                        
-                              <label for="numeroChamado">Motivo para n„o instalaÁ„o</label>
-                                     
-                              <select class="form-control" >
-                               <option selected>Selecione...</option>
-                               
-                               <c:forEach var="item" items="${responsaveisAvarias}">
-                                     <option value="${item.id}">${item.nomeGrupoResponsavel}</option>
-                                </c:forEach>
-                                
-                             </select>
-                             
-                       </div>
-                       
-                       <hr>
-                       
-                       <div class="form-group">
-                            <center>
-                                <button type="button" class="btn btn-primary btn-lg">Reportar</button>
-                            </center>
-                       </div>
-                       
 		         
 		         </div>
 		         

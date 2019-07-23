@@ -12,7 +12,11 @@ public class ResponsavelAvaria {
 	
 	public ResponsavelAvaria() {
 	}
-
+	
+	public ResponsavelAvaria(Long id) {
+		this.id = id;
+	}
+	
 	public ResponsavelAvaria(Long id, String nomeGrupoResponsavel) {
 		this.id = id;
 		this.nomeGrupoResponsavel = nomeGrupoResponsavel;
